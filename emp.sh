@@ -15,18 +15,11 @@ function getworkinghours(){
  esac
 echo $emphrs
 }
-function getempwage(){
-        echo $(($1*$emprateperhour))
-}
-
-
 while [[ $totalemphrs -lt $maxhoursinmonth && $totalworkingdays -lt $noofworkingdays ]]
 do
         ((totalworkingdays++))
         emphrs=$( getworkinghours $((RANDOM%3)) )
         totalemphrs=$(($emphrs + $totalemphrs))
-        dailywages[$totalworkingdays]=$( getempwage $emphrs )
 done
 totalsalary=$(($emprateperhour*$totalemphrs))
 echo "total salary is $totalsalary"
-echo ${dailywages[@]}
