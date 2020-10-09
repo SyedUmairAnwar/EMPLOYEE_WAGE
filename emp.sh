@@ -1,17 +1,18 @@
 #!/bin/bash -x
 check=$(( RANDOM%3 ))
-if [ $check -eq 1 ]
-then
+case $check in
+	1))
         ratehour=10
         hour=4
-        salary=$(($ratehour*$hour))
-elif [ $check -eq 2 ]
-then
+        salary=$(($ratehour*$hour));;
+
+	2))
         ratehour=20
         hour=8
-        salary=$(($ratehour*$hour))
-else
-        salary=0
-fi
+        salary=$(($ratehour*$hour));;
+	*)
+        salary=0;;
+esac
 echo "the salary is:" $salary
+
 
