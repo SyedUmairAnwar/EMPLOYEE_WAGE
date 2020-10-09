@@ -1,13 +1,17 @@
 #!/bin/bash -x
-
-isfulltime=1
-chech=$((RANDOM%2))
-if [ $chech -eq $isfulltime ]
+check=$(( RANDOM%3 ))
+if [ $check -eq 1 ]
 then
-        rateperhour=20
-        hrs=8
-        salary=$(($rateperhour*$hrs))
+        ratehour=10
+        hour=4
+        salary=$(($ratehour*$hour))
+elif [ $check -eq 2 ]
+then
+        ratehour=20
+        hour=8
+        salary=$(($ratehour*$hour))
 else
         salary=0
 fi
-echo "your one day salary is" $salary
+echo "the salary is:" $salary
+
