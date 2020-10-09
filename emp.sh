@@ -1,21 +1,24 @@
 #!/bin/bash -x
-isfulltime=1
-isparttime=2
-numOfWorkingDays=20
-totalSalary=0
-rate=20
-for ((day=1;day<=$numOfWorkingDays;day++))
+MAXHRS=40
+IS_FULL_TIME=1
+IS_PART_TIME=2
+NUM_OF_WORKING_DAYS=20
+totalemphrs=0
+RATE=20
+totaldays=0
+while [ $MAXHRS -gt $totalemphrs -a $totaldays -lt $NUM_OF_WORKING_DAYS ]
 do
+        ((totalday++))
         random=$((RANDOM%3))
         echo $random
         case $random in
-                $isfulltime) hrs=8;;
-                $isparttime) hrs=4;;
+                $IS_FULLTIME) hrs=8;;
+                $IS_PART_TIME) hrs=4;;
                  *) hrs=0;;
         esac
-salary=$(($rate*$hrs))
-totalSalary=$(($salary+$totalSalary))
-echo "total salary is:" $totalSalary
+        totalemphrs=$(($totalemphrs+$hrs))
 done
 
+totalSalary=$(($RATE+$totalemphrs))
+echo "total salary is:" $totalSalary
 
